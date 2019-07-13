@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-13T11:12:34.684Z</updated>
+  <updated>2019-07-13T11:49:27.907Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="http://yoursite.com/2019/07/13/%E4%BB%A4PHPer%E7%96%91%E6%83%91%E7%9A%84CGI%E3%80%81FastCGI%E5%8F%8AFPM/"/>
     <id>http://yoursite.com/2019/07/13/令PHPer疑惑的CGI、FastCGI及FPM/</id>
     <published>2019-07-13T03:40:46.000Z</published>
-    <updated>2019-07-13T11:12:34.684Z</updated>
+    <updated>2019-07-13T11:49:27.907Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="CGI是什么"><a href="#CGI是什么" class="headerlink" title="CGI是什么"></a>CGI是什么</h2><p>维基百科上是这么描述的：通用网关接口（Common Gateway Interface/CGI）是一种重要的互联网技术，可以让一个客户端，从网页浏览器向服务器上的程序请求数据。CGI描述了服务器和请求处理程序之间传输数据的一种<code>标准</code>。</p><h2 id="FastCGI是什么"><a href="#FastCGI是什么" class="headerlink" title="FastCGI是什么"></a>FastCGI是什么</h2><h2 id="FPM又是什么"><a href="#FPM又是什么" class="headerlink" title="FPM又是什么"></a>FPM又是什么</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="CGI是什么"><a href="#CGI是什么" class="headerlink" title="CGI是什么"></a>CGI是什么</h2><p>CGI全称通用网关接口。通用网关接口（Common Gateway Interface）是一种重要的互联网技术，可以让一个客户端，从网页浏览器向服务器上的程序请求数据。CGI描述了服务器和请求处理程序之间传输数据的一种<code>标准</code>— 维基百科。</p><p>说的简单点，所谓CGI其实就是定义了服务器（如nginx）和处理程序（如PHP）之间该如何进行数据交互的标准。如果没有这个标准，服务器按照自己的方式把数据传给处理程序，那处理程序该如何识别，所以提供了一种各类服务器和各个处理程序都认同的的标准，规定了哪些数据该传递，以什么样的方式传递。</p><p>那所谓的<code>数据</code>，又是什么？</p><p>这里的数据我认为应该分成两部分。第一部分是<strong>入</strong>：服务器传递给处理程序，这个时候会传递如<code>url</code>、<code>request body</code>、<code>request header</code>等信息，PHP解析器(php-cgi)拿到这些信息，进行程序内部的处理。第二部分是<strong>出</strong>：处理程序把响应数据回传给服务器，这个时候的数据就会是<code>response</code>等响应信息、服务器拿到数据后，通过cgi解析，处理完成后，返回给客户端。</p><p>CGI就那么完美吗？</p><p>答案当然是否定的，每一次的web请求，都会开启一个进程进行处理，当请求处理完之后，就要关闭，这样频繁的对进程进行创建销毁，效率低、<br>处理速度慢，而且当连接数一多，过多的进程就会消耗更多的资源和内存</p><h2 id="FastCGI是什么"><a href="#FastCGI是什么" class="headerlink" title="FastCGI是什么"></a>FastCGI是什么</h2><h2 id="FPM又是什么"><a href="#FPM又是什么" class="headerlink" title="FPM又是什么"></a>FPM又是什么</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;CGI是什么&quot;&gt;&lt;a href=&quot;#CGI是什么&quot; class=&quot;headerlink&quot; title=&quot;CGI是什么&quot;&gt;&lt;/a&gt;CGI是什么&lt;/h2&gt;&lt;p&gt;维基百科上是这么描述的：通用网关接口（Common Gateway Interface/CGI）是一种重要的
+        &lt;h2 id=&quot;CGI是什么&quot;&gt;&lt;a href=&quot;#CGI是什么&quot; class=&quot;headerlink&quot; title=&quot;CGI是什么&quot;&gt;&lt;/a&gt;CGI是什么&lt;/h2&gt;&lt;p&gt;CGI全称通用网关接口。通用网关接口（Common Gateway Interface）是一种重要的互联网技
       
     
     </summary>

@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 常见web安全的攻击与防御 · Lustre个人博客</title><meta name="description" content="常见web安全的攻击与防御 - firelustre"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="Lustre个人博客"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="https://github.com/FireLustre" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">常见web安全的攻击与防御</h1><div class="post-info">Jul 15, 2019</div><div class="post-content"><p>在开放的互联网环境下，总有一些非法的用户想要攻击你的web站点，所以在这里记录一些和web安全相关的总结。</p>
+<blockquote>
+<p>文章中所有的列子都以PHP语言为例。</p>
+</blockquote>
+<h2 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h2><p>XSS攻击又称为跨站脚本攻击。一般是攻击者将恶意的代码写入到页面中，当正常用户访问网页时，会触发这些恶意注入的代码。</p>
+<h3 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h3><p>反射型XSS，一般出现在url地址中。需要用户访问携带了恶意代码的地址才可以触发，且只会触发一次。一般出现在网站的搜索功能中。</p>
+<h3 id="存储型"><a href="#存储型" class="headerlink" title="存储型"></a>存储型</h3><p>反射型XSS，也叫“持久型”XSS攻击，恶意代码通过表单提交的方式，存储在站点的服务器当中，当正常用户访问页面时，就会触发。一般出现在评论、文章发布等。</p>
+<h3 id="XSS的防御"><a href="#XSS的防御" class="headerlink" title="XSS的防御"></a>XSS的防御</h3><p>XSS主要通过注入html、JavaScript代码等方法。所以可以采用过滤标签和转义特殊字符的方法。</p>
+<ul>
+<li><p>标签过滤，标签过滤可以使用一些正则表达式，过滤掉如<code>script</code>、<code>onclick</code>等标签，这样注入的代码将无法正常执行。</p>
+</li>
+<li><p>转义特殊字符，在这个一切以用户体验为主的时代，这个方法相对于标签过滤来说，无疑是更好的。它只是将特殊字符转换为 HTML 实体，在页面显示的时候，不会过滤掉用户发布的任何信息。在PHP中提供了<a href="https://www.php.net/manual/zh/function.htmlspecialchars.php" target="_blank" rel="noopener">htmlspecialchars</a>这个方法。</p>
+</li>
+</ul>
+<h2 id="CSRF攻击"><a href="#CSRF攻击" class="headerlink" title="CSRF攻击"></a>CSRF攻击</h2><h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><h2 id="DDOS攻击"><a href="#DDOS攻击" class="headerlink" title="DDOS攻击"></a>DDOS攻击</h2></div></article></div></main><footer><div class="paginator"><a href="/2019/07/13/聊一聊CGI、FastCGI及FPM/" class="next">NEXT</a></div><div class="copyright"><p>© 2019 <a href="http://yoursite.com">firelustre</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 常见web安全的攻击与防御 · Lustre个人博客</title><meta name="description" content="常见web安全的攻击与防御 - firelustre"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="Lustre个人博客"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="https://github.com/FireLustre" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">常见web安全的攻击与防御</h1><div class="post-info">Jul 17, 2019</div><div class="post-content"><p>在开放的互联网环境下，总有一些非法的用户想要攻击你的web站点，所以在这里记录一些和web安全相关的总结。</p>
+<blockquote>
+<p>文章中所有的列子都以PHP语言为例。</p>
+</blockquote>
+<h2 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h2><p>XSS攻击——跨站脚本攻击。一般是攻击者将恶意的代码写入到页面中，当正常用户访问网页时，会触发这些恶意注入的代码。</p>
+<p>造成的后果：</p>
+<ul>
+<li>网页展示异常，网页展示的是攻击者串改过的非正常页面。</li>
+<li>攻击者利用普通用户的登录状态，进行一些非法操作，比如把你自己的文章全删了。</li>
+<li>盗用cookie信息，进行一些风险性的操作。</li>
+</ul>
+<h3 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h3><p>反射型XSS，一般出现在url地址中。需要用户访问携带了恶意代码的地址才可以触发，且只会触发一次。一般出现在网站的搜索功能中。</p>
+<h3 id="存储型"><a href="#存储型" class="headerlink" title="存储型"></a>存储型</h3><p>反射型XSS，也叫“持久型”XSS攻击，恶意代码通过表单提交的方式，存储在站点的服务器当中，当正常用户访问页面时，就会触发。一般出现在评论、文章发布等。</p>
+<h3 id="XSS的防御"><a href="#XSS的防御" class="headerlink" title="XSS的防御"></a>XSS的防御</h3><p>XSS主要通过注入html、JavaScript代码等方法。所以可以采用过滤标签和转义特殊字符的方法。</p>
+<ul>
+<li><p>标签过滤，标签过滤可以使用一些正则表达式，过滤掉如<code>script</code>、<code>onclick</code>等标签，这样注入的代码将无法正常执行。</p>
+</li>
+<li><p>转义特殊字符，在这个一切以用户体验为主的时代，这个方法相对于标签过滤来说，无疑是更好的。它只是将特殊字符转换为 HTML 实体，在页面显示的时候，不会过滤掉用户发布的任何信息。在PHP中提供了<a href="https://www.php.net/manual/zh/function.htmlspecialchars.php" target="_blank" rel="noopener">htmlspecialchars</a>这个方法。</p>
+</li>
+</ul>
+<h2 id="CSRF攻击"><a href="#CSRF攻击" class="headerlink" title="CSRF攻击"></a>CSRF攻击</h2><p>CSRF攻击——跨站请求伪造。顾名思义就是攻击者伪装成被攻击者（以被攻击者的身份）进行一些操作。</p>
+<blockquote>
+<p>说CSRF之前就要先说一下浏览器的同源策略。那什么是同源策略？</p>
+<p>同源策略是指在同一种、同一域名及同一端口下才可以共享cookie等数据。</p>
+</blockquote>
+<p>CSRF攻击通过绕过同源策略的安全机制，来利用被攻击者在某个网页登录的信息来进行一些恶意的攻击。比如小白用户A登录了某xx银行，此时A打开了攻击者B发布的一个链接<code>http://test.foo.com/</code>，A认为这是一个安全链接，于是就访问了这个恶意的链接；在这个恶意的链接所对应的网站下，其实嵌套了一个转账行为；于是A莫名奇妙的少了1块钱。</p>
+<h3 id="CSRF的防御"><a href="#CSRF的防御" class="headerlink" title="CSRF的防御"></a>CSRF的防御</h3><p>通过上面的列子，我们知道了这种攻击是通过第三方网站请求我们的服务（第三方网站利用了我们的用户登录信息）导致的。一般的防御方法有：</p>
+<ul>
+<li>判断<strong>请求头</strong>中的<code>referer</code>信息，来判断是否是自己的网站发起的请求。</li>
+<li>对于一些表单提交的POST请求，可以颁发临时token，这样一来，根据者所提交的表单我们就可以根据这个token来判断是无效的。</li>
+</ul>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>sql注入的问题，应该是服务端编写代码不严谨才会导致的问题。常见的sql注入有很多种，这里写几个有代表性的。</p>
+<p>举个常见的后台身份绕过漏洞的列子，当我们要登录一个网站时，我们输入的密码为“123456’ or  1 = 1 –”。</p>
+<p>那通过表单的提交，后端sql的组装，传递到mysql就是这样一句sql：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> username = <span class="string">'lustre'</span> <span class="keyword">and</span> pwd = <span class="string">'123456'</span> <span class="keyword">or</span>  <span class="number">1</span> = <span class="number">1</span> <span class="comment">-- '</span></span><br></pre></td></tr></table></figure>
+
+<p>这就是<code>or</code>大法，成功绕过了密码校验。</p>
+<p>针对上面的这种情况，一方面我们可以将用户的参数进行过滤或者转义，另一方面可以使用PDO占位符进行处理。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$pdo = <span class="keyword">new</span> PDO(<span class="string">"mysql:host=localhost; dbname=demo"</span>, <span class="string">"user"</span>, <span class="string">"pass"</span>);</span><br><span class="line">$pdo-&gt;exec(<span class="string">"set names 'utf8'"</span>);</span><br><span class="line">$sql=<span class="string">"select * from user where username = ? and pwd = ?"</span>;</span><br><span class="line">$stmt = $pdo-&gt;prepare($sql);</span><br><span class="line">$exeres = $stmt-&gt;execute(<span class="keyword">array</span>($testname, $pass));</span><br></pre></td></tr></table></figure>
+
+<p>上面的示例代码就可以防范sql注入，因为执行<code>prepare</code>方法时，查询的语句已经传递给了mysql，php程序没有提交任何参数，当执行<code>execute</code>方法时，参数才被传递过去。</p>
+<p>关于sql注入，这里只是冰山一角，目前掌握的也不多，只能说到这里了，呃……</p>
+<h2 id="DDoS攻击"><a href="#DDoS攻击" class="headerlink" title="DDoS攻击"></a>DDoS攻击</h2><p>DDos攻击——分布式拒绝服务<strong>攻击</strong></p>
+<p>这个解释感觉不好理解，其实就是攻击者利用很多“肉鸡”去攻击某个站点。当然这些“肉鸡”可能也是受害者。比如攻击者先用XSS攻击手段去攻击了一个流量很大的网站，然后让这些用户又去被动访问攻击的目标站点，导致短时间内站点流量剧增，影响正常用户访问。</p>
+<p><a href="https://www.zhihu.com/question/22259175" target="_blank" rel="noopener">知乎</a>上举了个列子，我觉得很形象。</p>
+<blockquote>
+<p>我开了一家有五十个座位的重庆火锅店，由于用料上等，童叟无欺。平时门庭若市，生意特别红火，而对面二狗家的火锅店却无人问津。二狗为了对付我，想了一个办法，叫了五十个人来我的火锅店坐着却不点菜，让别的客人无法吃饭。</p>
+</blockquote>
+<h3 id="如何应对-DDoS-攻击？"><a href="#如何应对-DDoS-攻击？" class="headerlink" title="如何应对 DDoS 攻击？"></a>如何应对 DDoS 攻击？</h3><ul>
+<li><p>上高防</p>
+</li>
+<li><p>黑名单</p>
+</li>
+<li><p>DDoS 清洗</p>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/07/20/PHP数组的实现/" class="prev">PREV</a><a href="/2019/07/15/老生常谈的tcp四次挥手/" class="next">NEXT</a></div><div class="copyright"><p>© 2019 <a href="http://yoursite.com">firelustre</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

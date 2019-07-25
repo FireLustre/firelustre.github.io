@@ -11,7 +11,7 @@
 <p>当我们定义一个<code>key-value</code>的数组时，在php底层，会见将<code>key</code>通过<code>time33</code>算法转换为一个<code>整形数字</code>，然后将这个<code>整形数字</code>再次经过散列计算，计算得到的结果作为<code>Hashtable</code>中的一个下标，最终将Bucket的下标存在<code>Hashtable</code>的value中。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$foo = [<span class="string">"key1"</span> =&gt; <span class="string">"value1"</span>, <span class="string">"key2"</span> =&gt; <span class="string">"value2"</span>];</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/php_array.jpg" alt="PHP7.0数组实现"></p>
+<p><img src="/images/php7_array.jpg" alt="PHP7.0数组实现"></p>
 <blockquote>
 <p>Hashtable是无序的， Bucket是有序的，PHP7.1后将Hashtable和Bucket统一在了arData里面</p>
 </blockquote>

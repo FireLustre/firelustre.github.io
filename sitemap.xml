@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/07/15/Redis%E5%9C%A8%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
+    
+    <lastmod>2019-07-25T15:53:31.042Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/20/PHP%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9E%E7%8E%B0/</loc>
     
-    <lastmod>2019-07-17T14:28:38.370Z</lastmod>
+    <lastmod>2019-07-25T15:51:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/17/mac%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAphp-website/</loc>
+    
+    <lastmod>2019-07-17T14:42:25.396Z</lastmod>
     
   </url>
   
@@ -33,13 +47,6 @@
     <loc>http://yoursite.com/2019/07/15/Redis%E5%9C%A8%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E4%B8%AD%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2019-07-15T15:05:22.078Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/15/Redis%E5%9C%A8%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
-    
-    <lastmod>2019-07-15T15:03:53.411Z</lastmod>
     
   </url>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-25T16:05:15.916Z</updated>
+  <updated>2019-07-30T15:50:04.794Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL引擎</title>
+    <link href="http://yoursite.com/2019/07/30/MySQL%E5%BC%95%E6%93%8E/"/>
+    <id>http://yoursite.com/2019/07/30/MySQL引擎/</id>
+    <published>2019-07-30T14:59:43.000Z</published>
+    <updated>2019-07-30T15:50:04.794Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于我们这些web开发者来说，MySQL是最常用的关系型数据库。那么把MySQL搞清楚就比较重要了。MySQL抛开DDL、DML和DCL语句之外，我们还需要知道MySQL有哪些引擎，索引的原理与使用，常见的慢查询的优化等。最近正好也在看MySQL相关的资料，结合一下最近学习的MySQL引擎相关的知识，做一个整理。</p><h2 id="常见的引擎对比"><a href="#常见的引擎对比" class="headerlink" title="常见的引擎对比"></a>常见的引擎对比</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;对于我们这些web开发者来说，MySQL是最常用的关系型数据库。那么把MySQL搞清楚就比较重要了。MySQL抛开DDL、DML和DCL语句之外，我们还需要知道MySQL有哪些引擎，索引的原理与使用，常见的慢查询的优化等。最近正好也在看MySQL相关的资料，结合一下最近学习
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Redis在秒杀场景下的应用</title>
+    <link href="http://yoursite.com/2019/07/28/Redis%E5%9C%A8%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/07/28/Redis在高并发中的应用/</id>
+    <published>2019-07-28T15:03:53.000Z</published>
+    <updated>2019-07-28T13:02:30.157Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>PHP数组的实现</title>
@@ -131,20 +166,6 @@
   </entry>
   
   <entry>
-    <title>Redis在高并发中的应用</title>
-    <link href="http://yoursite.com/2019/07/15/Redis%E5%9C%A8%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
-    <id>http://yoursite.com/2019/07/15/Redis在高并发中的应用/</id>
-    <published>2019-07-15T15:03:53.000Z</published>
-    <updated>2019-07-25T15:53:31.042Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>MySQL explain地使用</title>
     <link href="http://yoursite.com/2019/07/15/MySQL-explain%E5%9C%B0%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2019/07/15/MySQL-explain地使用/</id>
@@ -178,20 +199,6 @@
     <id>http://yoursite.com/2019/07/15/MySQL的索引/</id>
     <published>2019-07-15T15:00:16.000Z</published>
     <updated>2019-07-15T15:00:16.087Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL引擎</title>
-    <link href="http://yoursite.com/2019/07/15/MySQL%E5%BC%95%E6%93%8E/"/>
-    <id>http://yoursite.com/2019/07/15/MySQL引擎/</id>
-    <published>2019-07-15T14:59:43.000Z</published>
-    <updated>2019-07-15T14:59:43.554Z</updated>
     
     <summary type="html">
     
